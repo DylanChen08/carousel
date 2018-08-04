@@ -52,22 +52,31 @@
 <body>
     <div id="wrapper" class="wrapper">
         <button id="clickMe">点我</button>
-        <div id="popover" class="popover">我是浮层，点击空白处关闭</div>
+        <div id="popover" class="popover">
+            <input type="checkbox"> 我是浮层，点击空白处关闭</div>
     </div>
 </body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
 <script>
-    clickMe.addEventListener('click', function () {
-        popover.style.display = 'block';
-        console.log(1)
+    showLayer();
+    $('#popover').on('click', function (e) {
+        e.stopPropagation()
     })
-    wrapper.addEventListener('click', function (e) {
-        e.stopPropagation();
-        console.log(2)
-    })
-    document.addEventListener('click', function () {
-        popover.style.display = 'none';
-        console.log(3)
-    })
+
+    function showLayer() {
+        $('#clickMe').one('click', function () {
+            $('#popover').show()
+            setTimeout(
+                () => {
+                    $(document).one('click', () => {
+                        $('#popover').hide()
+                        showLayer()
+                    })
+                }
+                , 0)
+        })
+    }
+
 </script>
 
 </html>
