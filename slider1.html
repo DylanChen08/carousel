@@ -7,6 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        body {
+            background: no-repeat url("./images/wallhaven-680441.jpg") ;
+            background-size: cover
+        }
+
         .images {
             display: flex;
             align-items: flex-start;
@@ -22,11 +27,71 @@
             width: 300px;
             margin: 0 auto;
             overflow: hidden;
-            border: 1px solid red;
+            /* border: 1px solid red; */
+            text-align: center;
+            box-shadow: 0 0 3px #ddd;
+        }
+
+
+
+        .buttons {
+            position: relative;
+            display: flex;
+            /* justify-content: space-around; */
+        }
+
+        .buttons>span {
+            flex: 1;
+            padding: 10px 5px;
+            border: 1px solid #ddd;
+            background: rgb(239, 239, 239);
+            cursor: pointer;
+        }
+
+
+        .buttons>span:nth-child(1):before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 26px;
+            border: 10px solid transparent;
+            border-top-color: rgb(239, 239, 239)
+        }
+
+        .buttons>span:nth-child(2):before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 100px;
+            border: 10px solid transparent;
+            border-top-color: rgb(239, 239, 239)
+        }
+
+        .buttons>span:nth-child(3):before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 175px;
+            border: 10px solid transparent;
+            border-top-color: rgb(239, 239, 239)
+        }
+
+        .buttons>span:nth-child(4):before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 255px;
+            border: 10px solid transparent;
+            border-top-color: rgb(239, 239, 239)
+        }
+
+        .lostBlur {
+            background: #000;
         }
 
         .red {
             color: red;
+            background: white !important;
         }
     </style>
 </head>
@@ -43,7 +108,7 @@
             <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532776976893&di=8da7864e880cb2db4cace4dfdd1423f3&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fdcc451da81cb39db04544f6adb160924ab183071.jpg"
                 width='300' height="200" alt="">
         </div>
-        <span id=buttons>
+        <span id=buttons class="buttons">
             <span>第1张</span>
             <span>第2张</span>
             <span>第3张</span>
@@ -86,9 +151,11 @@
     })
 
     function activeButtons($buttons) {
+
         $buttons.addClass("red")
             .siblings(".red")
             .removeClass("red")
+
     }
 
     function setTimer() {
@@ -100,7 +167,7 @@
 
         }, 1000)
     }
-    preventDefault();
+   
 
 </script>
 
